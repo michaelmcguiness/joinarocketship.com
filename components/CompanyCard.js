@@ -1,7 +1,7 @@
 import React from 'react'
 import NextLink from 'next/link'
-import format from 'comma-number'
-import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/core'
+import { useColorMode, Heading, Text, Flex, Image, Link } from '@chakra-ui/core'
+import { intToString } from '../utils/helperFunctions'
 
 const CompanyCard = (frontMatter) => {
   const {
@@ -12,8 +12,7 @@ const CompanyCard = (frontMatter) => {
     location,
     investors,
     valuation,
-    website,
-    image
+    favicon
   } = frontMatter
   const { colorMode } = useColorMode()
   const secondaryTextColor = {
@@ -32,6 +31,7 @@ const CompanyCard = (frontMatter) => {
   return (
     <NextLink href={`reports/${slug}`} passHref>
       <Link
+        m={1}
         w='100%'
         _hover={{
           boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
@@ -42,9 +42,18 @@ const CompanyCard = (frontMatter) => {
         borderRadius={4}
         p={2}
       >
-        <Heading size='md' as='h3' mb={2} fontWeight='medium'>
-          {title}
-        </Heading>
+        <Flex mb={2} alignItems='center'>
+          <Image height={5} src={favicon} mr={2} />
+          <Heading size='md' as='h3' fontWeight='medium'>
+            {title}
+          </Heading>
+        </Flex>
+        <Text color={secondaryTextColor[colorMode]} fontWeight='medium' mb={1}>
+          {`${sector} • ${location} • Employees: ~${employeeCount} • Valuation: ~$${intToString(valuation)} • Investors: ${investors.join(', ')}`}
+        </Text>
+        <Text color={secondaryTextColor[colorMode]}>
+          {description}
+        </Text>
       </Link>
     </NextLink>
   )
