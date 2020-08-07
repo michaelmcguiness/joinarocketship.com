@@ -17,7 +17,7 @@ const LinkBox = ({ title, url }) => {
 
   return (
     <Link
-      mb={2}
+      m={1}
       w='100%'
       _hover={{
         boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',

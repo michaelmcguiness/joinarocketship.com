@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/core'
 
 import Container from '@components/Container'
+import CompanyCard from '@components/CompanyCard'
 
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import { frontMatter as reports } from './reports/**/*.mdx'
@@ -20,7 +21,7 @@ import { frontMatter as reports } from './reports/**/*.mdx'
 const url = 'https://joinarocketship.com/companies'
 const title = 'Companies - joinarocketship.com'
 const description =
-  'A growing directory of hyper-growth companies on a Rocket Ship trajectory.'
+  'A growing directory of hyper-growth companies on a rocket ship trajectory.'
 
 const Companies = () => {
   const [searchValue, setSearchValue] = useState('')
@@ -35,8 +36,6 @@ const Companies = () => {
     .filter((frontMatter) =>
       frontMatter.title.toLowerCase().includes(searchValue.toLowerCase())
     )
-
-  console.log(filteredReports)
 
   return (
     <>
@@ -53,6 +52,7 @@ const Companies = () => {
           justifyContent='center'
           alignItems='flex-start'
           m='0 auto 4rem auto'
+          width='100%'
           maxWidth='700px'
         >
           <Flex
@@ -65,7 +65,7 @@ const Companies = () => {
               Company Directory
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>{description}</Text>
-            <InputGroup my={4} mr={4} w='100%'>
+            <InputGroup my={4} mr={4} w='100%' maxWidth='400px'>
               <Input
                 aria-label='Search companies'
                 onChange={(e) => setSearchValue(e.target.value)}
@@ -75,6 +75,18 @@ const Companies = () => {
                 <Icon name='search' color='gray.300' />
               </InputRightElement>
             </InputGroup>
+          </Flex>
+          <Flex
+            flexDirection='column'
+            justifyContent='flex-start'
+            alignItems='flex-start'
+            maxWidth='700px'
+            mt={8}
+          >
+            {!filteredReports.length && 'No posts found.'}
+            {filteredReports.map((frontMatter) => (
+              <CompanyCard key={frontMatter.title} {...frontMatter} />
+            ))}
           </Flex>
         </Stack>
       </Container>

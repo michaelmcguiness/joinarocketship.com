@@ -63,6 +63,7 @@ const Resources = () => {
             flexDirection='column'
             justifyContent='flex-start'
             alignItems='flex-start'
+            width='100%'
           >
             <Heading letterSpacing='tight' mb={2} as='h1' size='2xl'>
               Resources
@@ -70,11 +71,11 @@ const Resources = () => {
             <Text color={secondaryTextColor[colorMode]}>
               {'How to join a rocket ship and why.'}
             </Text>
-            <InputGroup my={4} mr={4} w='100%' maxWidth='300px'>
+            <InputGroup my={4} mr={4} w='100%' maxWidth='400px'>
               <Input
-                aria-label='Search articles'
+                aria-label='Search resources'
                 onChange={(e) => setSearchValue(e.target.value)}
-                placeholder='Search articles'
+                placeholder='Search resources'
               />
               <InputRightElement>
                 <Icon name='search' color='gray.300' />
