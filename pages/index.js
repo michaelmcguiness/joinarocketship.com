@@ -3,6 +3,7 @@ import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core'
 
 import Container from '@components/Container'
 import QuoteBox from '@components/QuoteBox'
+import Subscribe from '@components/Subscribe'
 
 const Index = () => {
   const { colorMode } = useColorMode()
@@ -34,10 +35,7 @@ const Index = () => {
             We help you identify the most-promising hyper-growth companies to work for,
             invest in, or simply learn about.
           </Text>
-          <Text mb={5} color={primarytextColor[colorMode]}>
-            Subscribe to our free newsletter to have overviews of the most exciting
-            companies (like this one) sent to your inbox every morning.
-          </Text>
+          <Subscribe />
           <Heading letterSpacing='tight' mb={5} as='h2' size='xl'>
             Why a Rocket Ship?
           </Heading>

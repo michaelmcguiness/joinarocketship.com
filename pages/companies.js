@@ -81,7 +81,6 @@ const Companies = () => {
             justifyContent='flex-start'
             alignItems='flex-start'
             maxWidth='700px'
-            mt={8}
           >
             {!filteredReports.length && 'No posts found.'}
             {filteredReports.map((frontMatter) => (
